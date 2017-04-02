@@ -1,0 +1,13 @@
+{
+  "name": "movepng",
+  "version": "1.0.0",
+  "license": "MIT",
+  "dependencies": {
+    "bluebird": "^3.5.0",
+    "caporal": "^0.3.0",
+    "fs-extra": "^2.1.1",
+    "glob": "^7.1.1",
+    "image-size": "^0.5.1",
+    "lodash": "^4.17.4"
+  }
+}

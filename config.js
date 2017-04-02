@@ -1,0 +1,1 @@
+exports.qualifiers = ['mdpi', 'hdpi', 'xhdpi', 'xxhdpi', 'xxxhdpi']
