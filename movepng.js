@@ -3,6 +3,7 @@ const fs = Promise.promisifyAll(require('fs-extra'))
 const path = require('path')
 const prog = require('caporal')
 const MoveByQualifier = require('./MoveByQualifier')
+const MoveByiOSQualifier = require('./MoveByiOSQualifier')
 const MoveByNumberInName = require('./MoveByNumberInName')
 const MoveByImageHeight = require('./MoveByImageHeight')
 
@@ -23,13 +24,17 @@ const movepng = async(args, options, logger) => {
     }
 
     const moveByQualifier = new MoveByQualifier()
+    const moveByiOSQualifier = new MoveByiOSQualifier()
     const moveByNumberInName = new MoveByNumberInName()
     const moveByImageHeight = new MoveByImageHeight()
 
     let moveMethod;
     if (await moveByQualifier.isApplicable(args.directory)) {
         moveMethod = moveByQualifier
-        logger.info('Using move by qualifier strategy')
+        logger.info('Using move by Android qualifier strategy')
+    } else if (await moveByiOSQualifier.isApplicable(args.directory)) {
+        moveMethod = moveByiOSQualifier
+        logger.info('Using move by iOS qualifier strategy')
     } else if (await moveByNumberInName.isApplicable(args.directory)) {
         moveMethod = moveByNumberInName
         logger.info('Using move by number in name strategy')
